@@ -74,7 +74,13 @@ return (syX.msd)
 
 
 
-#return the average by .(subject,activity_code)
-#can't figure this out...if there was was only one column, you'd use tapply...maybe you should, and do it in a loop
-
+#return the average with subject in the rows and activity name in the columns
+# expects a data frame and an optional vector of strings which are the factors the dataframe
+#  if passed the results of prepdata above without a list of factors, it'll work fine
+avgdata <- function(syX,factors=c("subject","activity","activity_code")) {
+     syX.melt <- melt(syX,factors)
+     avgs <- dcast(syX.melt,subject ~ activity,mean)
+     
+     return (avgs)
+}
 
