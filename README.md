@@ -42,7 +42,7 @@ function takes two arguments:
 defaults to the factor columns returned by
 prepdata().
 
-    Avgdata returns a dataframe with the average of all measurements for
+    Avgdata() returns a dataframe with the average of all measurements for
 each subject/activity/measurement set (see the codebook for futher
 explanation)
 

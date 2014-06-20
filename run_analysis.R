@@ -91,8 +91,7 @@ return (syX.msd)
 #  if passed the results of prepdata above without a list of factors, it'll work fine
 avgdata <- function(syX,factors=c("subject","activity","activity_code")) {
      syX.melt <- melt(syX,factors)
-     avgs <- dcast(syX.melt,subject ~ activity,mean)
-     colnames(avgs) <- tolower(colnames(avgs))
+     avgs <- dcast(syX.melt,subject + activity ~ variable,mean)
      
      return (avgs)
 }
