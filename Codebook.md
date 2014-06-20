@@ -1,5 +1,4 @@
-# Codebook
-## Getting and Cleaning Class Project
+# Codebook - Getting and Cleaning Class Project
 ###### June 2014
 
 ## Summary
@@ -7,7 +6,7 @@
 run_analysis.R() provides two functions for tidying the UCI smartphone data (see the readme for links to the original data and usage instructions):
 
 1. **prepdata()** - downloads and tidys the data
-2. **avgdata()*** - returns averages for each subject/activity/measurement set
+2. **avgdata()** - returns averages for each subject/activity/measurement set
 
 ### prepdata()
 
@@ -19,18 +18,15 @@ It follows the general flow below:
 
 1. Downloads data - looks for "smartphone-data.zip" in the current working directory--if the file is not found, the data is downloaded and unzipped.
 2. The test and training data sets are read into R. Data include:
-
-	-	X_test.txt and X_training.txt
-	-	y_test.txt and y_training.txt
-	-	subject_test.txt and subject_train.txt
-	-  features.txt
-	-  activity_labels.txt
-
+    -	X_test.txt and X_training.txt
+    -	y_test.txt and y_training.txt
+    -	subject_test.txt and subject_train.txt
+    -  features.txt
+    -  activity_labels.txt
 3. Combine the test and training data, in that order, for each of the following:
-	-	X
-	-	y
-	-	subject
-
+    -	X
+    -	y
+    -	subject
 4. Merge y data with activity_labels 
 5. Remove special characters from feature names and change all letters to lowercase
 6. Use feature codes as column names for X
