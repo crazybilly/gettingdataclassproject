@@ -37,8 +37,8 @@ works).
   2. avgdata(x,factors=c("subject","activity","activity_code")) - this
 function takes two arguments:
 
-    1. x - a data frame, usually the one prepared by prepdata().
-    2. a list of strings, naming the factor columns within x. This argument
+    * x - a data frame, usually the one prepared by prepdata().
+    * a list of strings, naming the factor columns within x. This argument
 defaults to the factor columns returned by
 prepdata().
 
