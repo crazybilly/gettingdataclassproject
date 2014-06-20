@@ -8,6 +8,13 @@
 # 
 # returns the compiled dataframe
 prepdata <- function() {
+     
+  #bomb out if these don't exist
+  options(warn=2)
+     require(plyr)
+     require(reshape2)
+  options(warn=0)
+  
 
   #check to see if you've already downloaded the file
   if(!file.exists("smartphone-data.zip")) {
@@ -24,11 +31,14 @@ prepdata <- function() {
   #start reading in the data
     #activity codes
     activity_codes <- read.table("UCI HAR Dataset//activity_labels.txt", stringsAsFactors=F)
-    names(activity_codes) <- c("activity_code","activity")
+    colnames(activity_codes) <- c("activity_code","activity")
   
     #feature codes
     feature_codes <- read.table("UCI HAR Dataset//features.txt", stringsAsFactors=F)
-    names(feature_codes) <- c("feature_codes","feature")
+          #name the columns
+          colnames(feature_codes) <- c("feature_codes","feature")
+          #get rid of weird characters and lowercase feature names
+          feature_codes$feature<-tolower(gsub(",|-|\\(|\\)|-","",feature_codes$feature))
   
     #training data
     subject_train <- read.table("UCI HAR Dataset//train//subject_train.txt", stringsAsFactors=F)
@@ -48,10 +58,12 @@ prepdata <- function() {
   
   #merge y and the activity codes
      colnames(y) <- "activity_code"
-     y       <-  join(y,activity_code)
+     #join will warn b/c I didn't specify a by code, but it's already coded in, so we'll ignore it
+     option(warn=-1)
+          y      <-  join(y,activity_codes)
+     option(warn=0)
   
   #fill in the column headings for X and subject
-   # TODO ---------------------- before you do this, you need to rewrite these names--they're awful
      colnames(X) <- as.character(feature_codes$feature)
      colnames(subject) <- "subject"
   
@@ -80,6 +92,7 @@ return (syX.msd)
 avgdata <- function(syX,factors=c("subject","activity","activity_code")) {
      syX.melt <- melt(syX,factors)
      avgs <- dcast(syX.melt,subject ~ activity,mean)
+     colnames(avgs) <- tolower(colnames(avgs))
      
      return (avgs)
 }
