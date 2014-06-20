@@ -28,21 +28,21 @@ Prepdata() will attempt to load these packages and will bomb out with an error i
 
 1. source(run_analysis.R) - creates two functions:
 
-  1. prepdata() - this function accepts no arguments and returns a data frame of all the data. It will look in the current directory for a
+    1. prepdata() - this function accepts no arguments and returns a data frame of all the data. It will look in the current directory for a
 file named 'smartphone-data.zip'--if it does not find this file, it will
 download and unzip a new copy, then bring the data together into a
 single data frame and return it (see the codebook for details about how this process
 works).
 
-  2. avgdata(x,factors=c("subject","activity","activity_code")) - this
+    2. avgdata(x,factors=c("subject","activity","activity_code")) - this
 function takes two arguments:
 
-    * x - a data frame, usually the one prepared by prepdata().
-    * a list of strings, naming the factor columns within x. This argument
+        1. x - a data frame, usually the one prepared by prepdata().
+        2. a list of strings, naming the factor columns within x. This argument
 defaults to the factor columns returned by
 prepdata().
 
-  Avgdata returns a dataframe with the average of all measurements for
+    Avgdata returns a dataframe with the average of all measurements for
 each subject/activity/measurement set (see the codebook for futher
 explanation)
 
