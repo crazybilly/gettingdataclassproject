@@ -26,7 +26,7 @@ Prepdata() will attempt to load these packages and will bomb out with an error i
 
 ### Usage	
 
-1. source(run_analysis.R) - creates two functions:
+1. source(run_analysis.R) - creates three functions:
 
     1. prepdata() - this function accepts no arguments and returns a data frame of all the data. It will look in the current directory for a
 file named 'smartphone-data.zip'--if it does not find this file, it will
@@ -41,6 +41,8 @@ works).
     Avgdata() returns a dataframe with the average of all measurements for
 each subject/activity/measurement set (see the codebook for futher
 explanation).
+
+    3. run_analysis() - this functions calls prepdata() and avgdata() and returns the results of avgdata().
 
 2. loaddatafortesting.R - If you have already downloaded and unzipped the data via prepdata (the
 unzipping process should create a subdirectory in the current working

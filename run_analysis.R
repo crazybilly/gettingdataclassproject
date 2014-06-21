@@ -97,3 +97,12 @@ avgdata <- function(syX) {
      return (avgs)
 }
 
+
+# a wrapper function to perform the two functions above
+run_analysis <- function() {
+     
+     syX <- prepdata()
+     syX <- avgdata(syX)
+     
+     return(syX)
+}
