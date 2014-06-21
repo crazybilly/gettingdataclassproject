@@ -3,10 +3,23 @@
 
 ## Summary
 
-run_analysis.R() provides two functions for tidying the UCI smartphone data (see the readme for links to the original data and usage instructions):
+run_analysis.R() provides three functions for tidying the UCI smartphone data. 
 
 1. **prepdata()** - downloads and tidys the data
 2. **avgdata()** - returns averages for each subject/activity/measurement set
+3. **run_analysis()** - a wrapper function to call both functions above. returns the results of avgdata().
+
+## About the data
+
+From the UCI's description of the data:
+
+> The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+>
+>The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. 
+
+See README.md for links to the original data and UCI's full usage instructions.
+
+## About the functions
 
 ### prepdata()
 
@@ -32,7 +45,8 @@ It follows the general flow below:
 6. Use feature codes as column names for X
 7. Add subject code as first column of X
 8. Add both activity code and activity name to x as new columns (at the beginning of the data frame)
-9. Return X (with subject, activity codes, activity names and measurement data)
+9. Remove all columns which do not have names including the strings "mean", "Mean" or "std" to ensure we only have mean and standard deviation column. Note that these summaries were calculated by UCI and provided in the X data sets.
+9. Return X (with subject, activity codes, activity names and measurement data).
  
 #### Schema of The Returned Data Frame
 
