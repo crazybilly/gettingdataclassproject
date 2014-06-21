@@ -34,17 +34,13 @@ download and unzip a new copy, then bring the data together into a
 single data frame and return it (see the codebook for details about how this process
 works).
 
-    2. avgdata(x,factors=c("subject","activity","activity_code")) - this
-function takes two arguments:
+    2. avgdata(x) - this function takes one argument:
 
         1. x - a data frame, usually the one prepared by prepdata().
-        2. a list of strings, naming the factor columns within x. This argument
-defaults to the factor columns returned by
-prepdata().
 
     Avgdata() returns a dataframe with the average of all measurements for
 each subject/activity/measurement set (see the codebook for futher
-explanation)
+explanation).
 
 2. loaddatafortesting.R - If you have already downloaded and unzipped the data via prepdata (the
 unzipping process should create a subdirectory in the current working

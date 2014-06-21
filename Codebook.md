@@ -50,7 +50,7 @@ The following 86 columns are the mean and standard deviations of various sensor 
 
 #### Function Walkthough
 
-avgdata() accepts two arguments: a data frame like the one returned by prepdata() and an optional list of factors in the data frame. By default, the factors argument uses the factors generated in the results of prepdata().
+avgdata() accepts one argument: a data frame like the one returned by prepdata(). 
 
 It follows the steps below:
 
@@ -59,8 +59,8 @@ It follows the steps below:
 
 #### Schema of the Returned Data Frame
 
-Assuming you passed avgdata() the results of prepdata(), it returns a data frame of 180 rows and 88 columns.
+Assuming you passed avgdata() the results of prepdata(), it should return a data frame of 180 rows and 88 columns.
 
-Each row corresponds to a unique subject/activity pair (this pair is listed in the first two columns of the returned data frame).
+Each row corresponds to a unique subject/activity pair (this pair is listed in the first two columns of the returned data frame with subject code as the first column and the name of the activity in the second column).
 
-The first column is the subject code; the second is the name of the activity. The other 86 columns are the mean of each sensor measurement for the subject/acvity pair over the entire data set, including the angle mean measurement (see justification above for why angles are included). 
+The other 86 columns are the mean of each sensor measurement for the subject/acvity pair over the entire data set, including the angle mean measurement (see justification above for why angles are included). 

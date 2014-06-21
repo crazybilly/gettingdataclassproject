@@ -89,8 +89,9 @@ return (syX.msd)
 #return the average with subject in the rows and activity name in the columns
 # expects a data frame and an optional vector of strings which are the factors the dataframe
 #  if passed the results of prepdata above without a list of factors, it'll work fine
-avgdata <- function(syX,factors=c("subject","activity","activity_code")) {
-     syX.melt <- melt(syX,factors)
+avgdata <- function(syX) {
+     
+     syX.melt <- melt(syX,id.vars = c("subject","activity","activity_code"))
      avgs <- dcast(syX.melt,subject + activity ~ variable,mean)
      
      return (avgs)
