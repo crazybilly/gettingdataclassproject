@@ -11,13 +11,30 @@ run_analysis.R() provides three functions for tidying the UCI smartphone data.
 
 ## About the data
 
-From the UCI's description of the data:
+### UCI's description of the data:
 
 > The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
 >
 >The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain. 
 
 See README.md for links to the original data and UCI's full usage instructions.
+
+### Units
+
+Several columns appear to be repeated. To read these columns, use this key to parse various variable names:
+
+t - bodyacc - mean - x
+
+1. t/f - distinguishes whether the variable is total or is calculated (ie. total minus gravity)
+2. bodyacc - various accelerometer and gyroscope readings. 
+3. mean/std - whether the variable is a mean of various readings or the standard deviation. If the unit is a mean, readings are in standard gravity units 'g' unless this section includes "gyro" (ie. are gyroscope readins) in which case, the units are radians/second. Standard deviations are, of course, in standard deviations from the mean.
+4. x/y/z - which axis is being read
+
+Other columns which do not conform to the code include:
+
+* **subject** contains an identifier for the subject who performed the actvity, an integer ranging from 1 to 30 with each number identifying a unique individual.
+* **activity_code** provides a unique numerical key for each of 6 activties performed by the subjects.
+* **activity** provides a human readable name for each of 6 activities performed by the subjects.
 
 ## About the functions
 
