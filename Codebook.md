@@ -21,7 +21,7 @@ See README.md for links to the original data and UCI's full usage instructions.
 
 ### Units
 
-Several columns appear to be repeated. To read these columns, use this key to parse various variable names:
+Several columns have very similar names. To read these columns, use this key to parse their names:
 
 t - bodyacc - mean - x
 
